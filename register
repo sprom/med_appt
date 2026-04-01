@@ -1,0 +1,32 @@
+#!/bin/bash
+# API Test Script for StayHealthy Telemedicine Platform
+# Testing User Registration Endpoint
+
+echo "Testing StayHealthy API - User Registration"
+echo "=============================================="
+echo ""
+
+# API Base URL (Update with actual backend URL)
+API_URL="http://localhost:3000/api"
+
+# Test User Registration
+echo "1. Testing User Registration Endpoint"
+echo "Request: POST /api/auth/register"
+echo "---"
+
+curl -X POST "${API_URL}/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "1234567890",
+    "password": "SecurePass123",
+    "age": 30,
+    "bloodGroup": "O+",
+    "role": "patient"
+  }' \
+  -w "\nStatus Code: %{http_code}\n" \
+  -v
+
+echo ""
+echo "=============================================="

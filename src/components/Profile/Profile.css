@@ -1,0 +1,225 @@
+/* Profile Styles */
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.profile-card,
+.medical-records-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--primary-100), var(--primary-50));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.profile-title {
+  flex: 1;
+}
+
+.profile-title h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+}
+
+.profile-title p {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.95rem;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+)
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-row.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+.form-group input.focused,
+.form-group textarea.focused {
+  background-color: var(--primary-50);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--gray-50);
+  border-radius: 8px;
+  align-items: center;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.detail-value {
+  color: var(--gray-800);
+}
+
+/* Medical Records */
+.medical-records-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.records-info {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--gray-50);
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+}
+
+.record-item:hover {
+  background-color: var(--primary-50);
+  border-color: var(--primary-300);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .profile-card,
+  .medical-records-card {
+    padding: 1.5rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .profile-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .record-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .record-item button {
+    width: 100%;
+  }
+}
