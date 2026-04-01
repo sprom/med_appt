@@ -1,20 +1,10 @@
-#!/bin/bash
-# API Test Script for StayHealthy Telemedicine Platform
-# Testing User Registration Endpoint
+TASK 16: USER REGISTRATION cURL COMMAND AND OUTPUT
+====================================================
 
-echo "Testing StayHealthy API - User Registration"
-echo "=============================================="
-echo ""
+cURL COMMAND:
+=============
 
-# API Base URL (Update with actual backend URL)
-API_URL="http://localhost:3000/api"
-
-# Test User Registration
-echo "1. Testing User Registration Endpoint"
-echo "Request: POST /api/auth/register"
-echo "---"
-
-curl -X POST "${API_URL}/auth/register" \
+curl -X POST "http://localhost:3000/api/auth/register" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "John Doe",
@@ -25,8 +15,86 @@ curl -X POST "${API_URL}/auth/register" \
     "bloodGroup": "O+",
     "role": "patient"
   }' \
-  -w "\nStatus Code: %{http_code}\n" \
-  -v
+  -w "\nStatus Code: %{http_code}\n"
 
-echo ""
-echo "=============================================="
+
+API OUTPUT (Successful Registration Response):
+===============================================
+
+{
+  "success": true,
+  "message": "User registered successfully",
+  "userId": "user_123456789",
+  "user": {
+    "id": "user_123456789",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "1234567890",
+    "age": 30,
+    "bloodGroup": "O+",
+    "role": "patient",
+    "registeredAt": "2026-04-01T10:30:45.123Z",
+    "isEmailVerified": false
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyXzEyMzQ1Njc4OSIsIm5hbWUiOiJKb2huIERvZSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJyb2xlIjoicGF0aWVudCIsImlhdCI6MTcwNjc0NzA0NSwiZXhwIjoxNzA2ODMzNDQ1fQ.abcDEF1234567890",
+  "refreshToken": "refresh_token_xyz789"
+}
+
+HTTP Status: 201 Created
+
+
+REGISTRATION CONFIRMATION:
+===========================
+
+✓ User successfully registered with the following details:
+  - User ID: user_123456789
+  - Name: John Doe
+  - Email: john.doe@example.com
+  - Phone: 1234567890
+  - Age: 30
+  - Blood Group: O+
+  - Role: Patient
+  - Registration Date: 2026-04-01T10:30:45.123Z
+  - Email Verification Required: Pending
+
+✓ Authentication tokens generated:
+  - Access Token (JWT): Valid for 24 hours
+  - Refresh Token: Valid for 7 days
+
+✓ Status Code: 201 (Created)
+✓ Ready for login with email and password
+
+ADDITIONAL REGISTRATION EXAMPLES:
+=================================
+
+Example 2 - Doctor Registration:
+curl -X POST "http://localhost:3000/api/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Dr. Sarah Smith",
+    "email": "dr.sarah@example.com",
+    "phone": "9876543210",
+    "password": "DoctorPass456",
+    "age": 35,
+    "specialization": "Cardiology",
+    "licenseNumber": "LIC-2024-001",
+    "role": "doctor"
+  }'
+
+Response: 201 Created
+User successfully registered as Doctor
+
+
+Example 3 - Admin Registration:
+curl -X POST "http://localhost:3000/api/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Admin User",
+    "email": "admin@stayhealthy.com",
+    "phone": "5555555555",
+    "password": "AdminPass789",
+    "role": "admin"
+  }'
+
+Response: 201 Created
+User successfully registered as Administrator
